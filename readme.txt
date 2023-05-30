@@ -14,9 +14,20 @@ into
 usr/share/lightdm.sh
 then uncoment line kinda like "start script" into etc/lightdm/lightdm.conf
 
+keyboard layout:
+in /etc/X11/xorg.conf.d/00-keyboard.conf looks like that:
 
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "us,ru"
+        Option "XkbOptions" "grp:alt_shift_toggle"
+EndSection
 
-
+If use super+space its conflicted with qtile layout.
+in qtile/config.py widget made acording to official documintation,
+also in the qtile directory is a script wich alow switch betwin kboard layout
+it should start with every lazy restart!
 
 
 
