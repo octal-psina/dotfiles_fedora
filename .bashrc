@@ -38,4 +38,4 @@ alias ll="ls -la"
 
 #auto start 
 neofetch &&
-shopt -s cdspell
+shopt -s cdspell 
