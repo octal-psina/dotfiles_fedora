@@ -39,3 +39,4 @@ alias ll="ls -la"
 #auto start 
 neofetch &&
 shopt -s cdspell 
+eval "$(starship init bash)"

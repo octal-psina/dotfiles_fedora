@@ -131,3 +131,5 @@ element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
 }
+//@theme "/home/marina/.local/share/rofi/themes/spotlight-dark.rasi"
+@theme "/home/marina/.local/share/rofi/themes/rounded-nord-dark.rasi"

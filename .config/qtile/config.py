@@ -115,8 +115,25 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus="#E5EEEF", border_normal="#6B7678",border_width=2),
     layout.Max(),
+    layout.MonadTall(border_focus="#E5EEEF",
+                     border_normal="#6B7678", border_width=1, margin=8),
+    layout.Bsp(border_focus="#E5EEEF", border_normal="#6B7678",
+               border_width=1, margin=8),
+    layout.MonadWide(border_focus="#E5EEEF",
+                     border_normal="#6B7678", border_width=1, margin=8),
+    layout.RatioTile(border_focus="#E5EEEF",
+                     border_normal="#6B7678", border_width=1, margin=8),
+    #layout.Matrix(),
+    #layout.MonadTall(
+    #       border_width=0,
+    #       font = "LiterationMono Nerd Font",
+    #       fontsize = 10,
+    #       margin = 8
+    #       ),
+    #layout.Stack(num_stacks=2)
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -137,37 +154,184 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+#screens = [
+#    Screen(
+#        top=bar.Bar(
+#            [
+#                widget.CurrentLayout(),
+#                widget.GroupBox(),
+#                widget.Spacer(),
+#                #widget.Prompt(),
+#                #widget.WindowName(),
+#                widget.Chord(
+#                    chords_colors={
+#                        "launch": ("#ff0000", "#ffffff"),
+#                    },
+#                    name_transform=lambda name: name.upper(),
+#                ),
+#                #widget.TextBox("default config", name="default"),
+#                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+#                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+#                # widget.StatusNotifier(),
+#                widget.Systray(),
+#                widget.Clock(format="%d.%m.%Y %a %H:%M"),
+#                widget.KeyboardLayout(configured_keyboards=['us','ru']),
+#                widget.QuickExit(default_text='',countdown_format='{}\t'),
+#            ],
+#            24,
+#            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+#            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+#        ),
+#    ),
+#]
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Spacer(),
-                #widget.Prompt(),
-                #widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Sep(
+                    linewidth=0,
+                    padding=6
                 ),
-                #widget.TextBox("default config", name="default"),
-                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
+                widget.Image(
+                    filename="~/.config/qtile/fedora.svg",
+                    scale="False"
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    padding=6
+                ),
+                widget.GroupBox(
+                    active="#ffffff",
+                    inactive = "#929895",
+                    rounded=False,
+                    highlight_color="#c4a7e7",
+                    highlight_method="line",
+                    borderwidth=0
+                ),
+                widget.Spacer(), 
+                widget.TextBox(
+                    text='',
+                    background="#23213633",
+                    foreground="#232136",
+                    padding=-3,
+                    fontsize=38
+                ),
+
+                widget.TextBox(
+                    text='',
+                    background="#232136",
+                    foreground="#f6c177",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.TextBox(
+                    text=' ',
+                    background="#f6c177",
+                    foreground="#191724",
+                    padding=7
+                ),
+                widget.CurrentLayout(
+                    background="#f6c177",
+                    foreground="#191724"
+                ),
+                widget.TextBox(
+                    text='',
+                    foreground="#eb6f92",
+                    background="#f6c177",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.Memory(
+                    format="󰍛 {MemUsed: .0f}{mm}",
+                    background="#eb6f92",
+                    foreground="#191724",
+                    interval=1.0
+                ),
+                widget.TextBox(
+                    text='',
+                    background="#eb6f92",
+                    foreground="#9ccfd8",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.Net(
+                    interface="enp1s0",
+                    format=" {interface}: {down} ↓↑ {up}",
+                    background="#9ccfd8",
+                    foreground="#191724",
+                    update_interval=1.0
+                ),
+                widget.TextBox(
+                        text='',
+                    background="#9ccfd8",
+                    foreground="#c4a7e7",
+                    padding=-4,
+                    fontsize=38
+                ),
+                widget.TextBox(
+                    text=' ',
+                    background="#c4a7e7",
+                    foreground="#191724",
+                    padding=7
+                ),
+                widget.Clock(
+                    background="#c4a7e7",
+                    foreground="#191724",
+                    format="%H:%M - %d/%m/%Y",
+                    update_interval=60.0
+                ),
+
+                widget.TextBox(
+                    text='',
+                    background="#c4a7e7",
+                    foreground="#e0def4",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.Volume(
+                    background="#e0def4",
+                    foreground="#191724",
+                    fmt="  {}",
+                ),
+                widget.TextBox(
+                    text='',
+                    background="#e0def4",
+                    foreground="#bab3c2",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.TextBox(
+                    text=' ',
+                    background="#bab3c2",
+                    foreground="#191724",
+                    padding=7
+                ),
+                widget.KeyboardLayout(configured_keyboards=['us','ru'],
+                    fgcolor_normal="#191724",
+                    background="#bab3c2",
+                ),
+                widget.TextBox(
+                    text='',
+                    background="#bab3c2",
+                    foreground="#232136",
+                    padding=-3,
+                    fontsize=38
+                ),
+                widget.QuickExit(
+                    default_text=' ',
+                    countdown_format='{}\t',
+                    foreground="#ff3d22",
+                    background="#232136",
+                ),
+
                 widget.Systray(),
-                widget.Clock(format="%d.%m.%Y %a %H:%M"),
-                widget.KeyboardLayout(configured_keyboards=['us','ru']),
-                widget.QuickExit(default_text='',countdown_format='{}\t'),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            25,
+            background="#1c1a2b33",#opacity=0.8,
         ),
     ),
+    
 ]
-
 
 # Drag floating layouts.
 mouse = [
